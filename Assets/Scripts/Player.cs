@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
 
     private void Move(Vector2 direction) 
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * (Crouching ? crouchSpeed : speed) * Time.deltaTime);
     }
 
     void OnDrawGizmos()
