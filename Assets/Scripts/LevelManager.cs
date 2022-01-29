@@ -8,13 +8,13 @@ public class LevelManager : MonoBehaviour
 
     void OnEnable()
     {
-        Player.OnKeyCollected += KeyCollected;
+        Key.OnKeyCollected += KeyCollected;
         Player.OnKeyDelivered += KeyDelivered;
     }    
 
     private void OnDisable() 
     {
-            Player.OnKeyCollected -= KeyCollected;
+            Key.OnKeyCollected -= KeyCollected;
             Player.OnKeyDelivered -= KeyDelivered;
     }
 

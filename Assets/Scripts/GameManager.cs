@@ -10,23 +10,30 @@ public class GameManager : MonoBehaviour
     public Object[] scenes;
     private int current_scene = 0;
     private List<string> scenes_paths;
-    void Awake() {
-        if(singleton == null){
+    void Awake()
+    {
+        if (singleton == null)
+        {
             DontDestroyOnLoad(gameObject);
             scenes_paths = new List<string>();
-            for(int i = 0; i < scenes.Length; i++){
+            for (int i = 0; i < scenes.Length; i++)
+            {
                 scenes_paths.Add(AssetDatabase.GetAssetPath(scenes[i]));
             }
             GameManager.singleton = this;
-        }else{
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
 
-    public void NextLevel(){
-        this.current_scene+=1;
-        if(current_scene < this.scenes_paths.Count){
-        SceneManager.LoadScene(scenes_paths[this.current_scene]);
+    public void NextLevel()
+    {
+        this.current_scene += 1;
+        if (current_scene < this.scenes_paths.Count)
+        {
+            SceneManager.LoadScene(scenes_paths[this.current_scene]);
         }
     }
 }

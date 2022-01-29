@@ -16,6 +16,10 @@ public class Player : MonoBehaviour, IDuality
     [SerializeField] private Transform roofCheck;
     [SerializeField] private Vector2 roofCheckSize;
     [SerializeField] private LayerMask roofLayer;
+    
+    [Header("Colors")]
+    [SerializeField] private Color colorDualityOne = Color.black;
+    [SerializeField] private Color colorDualityTwo = Color.white;
 
     [Header("Colliders")]
     [SerializeField] private Collider2D collBody;
@@ -26,6 +30,7 @@ public class Player : MonoBehaviour, IDuality
 
     private Rigidbody2D rb2d;
     private Animator anim;
+    private SpriteRenderer spriteRenderer;
     private float axisHorizontal;
     private bool jumpInput;
     private bool crouchInput;
@@ -83,9 +88,21 @@ public class Player : MonoBehaviour, IDuality
     public bool CanPush { get => CurrentDualityState == DualityState.DualityOne; }
     public bool CanCrush { get => CurrentDualityState == DualityState.DualityOne; }
 
-    public DualityState CurrentDualityState { get; set; }
+    private DualityState currentDualityState;
+    public DualityState CurrentDualityState 
+    { 
+        get => currentDualityState; 
+        set
+        {
+            if (currentDualityState != value)
+            {
+                currentDualityState = value;
+                anim.SetTrigger("dualityChanged");
+                spriteRenderer.color = currentDualityState == DualityState.DualityOne ? colorDualityOne : colorDualityTwo; 
+            }
+        } 
+    }
 
-    public static event UnityAction<int> OnKeyCollected;
     public static event UnityAction<int> OnKeyDelivered;
 
     // Start is called before the first frame update
@@ -93,6 +110,7 @@ public class Player : MonoBehaviour, IDuality
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -216,13 +234,7 @@ public class Player : MonoBehaviour, IDuality
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.CompareTag("Key"))
-        {
-            // TODO: Destroy key
-            OnKeyCollected?.Invoke(1);
-            Debug.Log("Key");
-            Destroy(other.gameObject);
-        }
+        
         if (other.CompareTag("Totem"))
         {
             OnKeyDelivered?.Invoke(1);
