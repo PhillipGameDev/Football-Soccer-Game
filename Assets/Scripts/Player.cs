@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("Colliders")]
     [SerializeField] private Collider2D collBody;
     [SerializeField] private Collider2D collCrouching;
+    [SerializeField] private Collider2D attack;
+    [SerializeField] float attackTime = 0.2f;
+    private bool isAttacking = false;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -96,9 +99,13 @@ public class Player : MonoBehaviour
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
 
+        if (Input.GetButtonDown("Fire2") && !isAttacking){
+            StartCoroutine(Attack());
+        }
+
         crouchInput = Input.GetButton("Crouch");
 
-        Crouch();   
+        Crouch();
     }
 
     private void Crouch()
@@ -131,6 +138,14 @@ public class Player : MonoBehaviour
         transform.Translate(direction * (Crouching ? crouchSpeed : speed) * Time.deltaTime);
     }
 
+    private IEnumerator Attack(){
+        isAttacking = true;
+        attack.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
+        attack.gameObject.SetActive(false);
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
@@ -150,6 +165,9 @@ public class Player : MonoBehaviour
         {
             OnKeyDelivered?.Invoke(1);
             Debug.Log("Totem");
+        }
+        if(other.CompareTag("Destructable")){
+            other.gameObject.SetActive(false);
         }
     }
 }
