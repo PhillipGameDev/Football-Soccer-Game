@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     }
     
     public static event UnityAction<int> OnKeyCollected;
+    public static event UnityAction<int> OnKeyDelivered;
 
     // Start is called before the first frame update
     void Start()
@@ -139,6 +140,13 @@ public class Player : MonoBehaviour
         {
             // TODO: Destroy key
             OnKeyCollected?.Invoke(1);
+            Debug.Log("Key");
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Totem"))
+        {
+            OnKeyDelivered?.Invoke(1);
+            Debug.Log("Totem");
         }
     }
 }
