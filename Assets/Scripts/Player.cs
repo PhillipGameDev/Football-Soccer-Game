@@ -13,6 +13,9 @@ public class Player : MonoBehaviour, IDuality
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Vector2 groundCheckSize;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform roofCheck;
+    [SerializeField] private Vector2 roofCheckSize;
+    [SerializeField] private LayerMask roofLayer;
 
     [Header("Colliders")]
     [SerializeField] private Collider2D collBody;
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour, IDuality
     private int jumpCount;
     private bool grounded;
     private bool crouching;
+    private bool roofed;
     private Rigidbody2D movableObject;
 
     public bool IsGrounded 
@@ -62,6 +66,18 @@ public class Player : MonoBehaviour, IDuality
         }
     }
 
+    public bool IsRoofed 
+    { 
+        get => roofed; 
+        private set
+        {
+            if (value != roofed)
+            {
+                roofed = value;
+            }
+        } 
+    }
+
     public bool CanCrounch { get => CurrentDualityState == DualityState.DualityTwo; }
     public bool CanDoubleJump { get => CurrentDualityState == DualityState.DualityTwo; }
     public bool CanPush { get => CurrentDualityState == DualityState.DualityOne; }
@@ -89,6 +105,7 @@ public class Player : MonoBehaviour, IDuality
     void Update()
     {
         IsGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
+        IsRoofed = Physics2D.OverlapBox(roofCheck.position, roofCheckSize, 0, roofLayer);
 
         axisHorizontal = Input.GetAxisRaw("Horizontal");
         
@@ -131,13 +148,14 @@ public class Player : MonoBehaviour, IDuality
 
     private void Crouch()
     { 
-        if (crouchInput && IsGrounded && CanCrounch)
+        if (crouchInput)
         {
-            Crouching = true;
+            if (IsGrounded && CanCrounch)
+                Crouching = true;
         } 
         else 
         {
-            Crouching = false;
+            Crouching = IsRoofed;
         }
 
         anim.SetBool("crouching", Crouching);
@@ -192,6 +210,8 @@ public class Player : MonoBehaviour, IDuality
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(roofCheck.position, roofCheckSize);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
