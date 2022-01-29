@@ -185,7 +185,7 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.toolchain.linux-x86_64": {
+    "com.unity.toolchain.win-x86_64-linux-x86_64": {
       "version": "1.0.0",
       "depth": 0,
       "source": "registry",
