@@ -16,7 +16,7 @@ public class Player : MonoBehaviour, IDuality
     [SerializeField] private Transform roofCheck;
     [SerializeField] private Vector2 roofCheckSize;
     [SerializeField] private LayerMask roofLayer;
-    
+
     [Header("Colors")]
     [SerializeField] private Color colorDualityOne = Color.black;
     [SerializeField] private Color colorDualityTwo = Color.white;
@@ -41,9 +41,9 @@ public class Player : MonoBehaviour, IDuality
     private bool roofed;
     private Rigidbody2D movableObject;
 
-    public bool IsGrounded 
-    { 
-        get => grounded; 
+    public bool IsGrounded
+    {
+        get => grounded;
         private set
         {
             if (value != grounded)
@@ -53,13 +53,13 @@ public class Player : MonoBehaviour, IDuality
                 if (grounded)
                     jumpCount = 0;
             }
-        } 
+        }
     }
 
-    public bool Crouching 
-    { 
+    public bool Crouching
+    {
         get => crouching;
-        private set 
+        private set
         {
             if (value != crouching)
             {
@@ -71,16 +71,16 @@ public class Player : MonoBehaviour, IDuality
         }
     }
 
-    public bool IsRoofed 
-    { 
-        get => roofed; 
+    public bool IsRoofed
+    {
+        get => roofed;
         private set
         {
             if (value != roofed)
             {
                 roofed = value;
             }
-        } 
+        }
     }
 
     public bool CanCrounch { get => CurrentDualityState == DualityState.DualityTwo; }
@@ -89,18 +89,25 @@ public class Player : MonoBehaviour, IDuality
     public bool CanCrush { get => CurrentDualityState == DualityState.DualityOne; }
 
     private DualityState currentDualityState;
-    public DualityState CurrentDualityState 
-    { 
-        get => currentDualityState; 
+    public DualityState CurrentDualityState
+    {
+        get => currentDualityState;
         set
         {
             if (currentDualityState != value)
             {
                 currentDualityState = value;
                 anim.SetTrigger("dualityChanged");
-                spriteRenderer.color = currentDualityState == DualityState.DualityOne ? colorDualityOne : colorDualityTwo; 
+                spriteRenderer.color = currentDualityState == DualityState.DualityOne ? colorDualityOne : colorDualityTwo;
+
+                if(!CanCrounch && Crouching)
+                {
+                    Crouching = false;
+                    anim.SetTrigger("idle");
+                }
             }
-        } 
+            
+        }
     }
 
     public static event UnityAction<int> OnKeyDelivered;
@@ -127,10 +134,10 @@ public class Player : MonoBehaviour, IDuality
         IsRoofed = Physics2D.OverlapBox(roofCheck.position, roofCheckSize, 0, roofLayer);
 
         axisHorizontal = Input.GetAxisRaw("Horizontal");
-        
+
         anim.SetBool("isGrounded", IsGrounded);
         Flip();
-        
+
 
         if (Input.GetButtonDown("Jump") && ((IsGrounded || (CanDoubleJump && jumpCount <= extraJumpNumber)) && !Crouching))
         {
@@ -158,7 +165,7 @@ public class Player : MonoBehaviour, IDuality
 
     private void Flip()
     {
-        if(axisHorizontal != 0)
+        if (axisHorizontal != 0)
         {
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Sign(axisHorizontal);
@@ -167,13 +174,17 @@ public class Player : MonoBehaviour, IDuality
     }
 
     private void Crouch()
-    { 
+    {
         if (crouchInput)
         {
             if (IsGrounded && CanCrounch)
                 Crouching = true;
-        } 
-        else 
+        }
+        else if(!CanCrounch)
+        {
+            Crouching = false;
+        }
+        else
         {
             Crouching = IsRoofed;
         }
@@ -184,7 +195,7 @@ public class Player : MonoBehaviour, IDuality
     private void Jump()
     {
         if (jumpInput)
-        {   
+        {
             jumping = true;
             jumpInput = false;
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
@@ -194,14 +205,14 @@ public class Player : MonoBehaviour, IDuality
         }
     }
 
-    private void Move(Vector2 direction) 
+    private void Move(Vector2 direction)
     {
         float finalSpeed = speed;
 
         if (movableObject != null && CanPush)
         {
             finalSpeed = pushSpeed;
-        } 
+        }
         else if (Crouching)
         {
             finalSpeed = crouchSpeed;
@@ -210,17 +221,18 @@ public class Player : MonoBehaviour, IDuality
         Vector2 velocity = rb2d.velocity;
         velocity.x = direction.x * finalSpeed /* Time.deltaTime*/;
         rb2d.velocity = velocity;
-        
+
         // transform.Translate(movement);
 
-        if (movableObject != null && CanPush && IsGrounded) 
+        if (movableObject != null && CanPush && IsGrounded)
         {
             velocity.y = movableObject.velocity.y;
             movableObject.velocity = velocity;
         }
     }
 
-    private IEnumerator Attack(){
+    private IEnumerator Attack()
+    {
         anim.SetTrigger("attack");
         isAttacking = true;
         attack.gameObject.SetActive(true);
@@ -237,26 +249,27 @@ public class Player : MonoBehaviour, IDuality
         Gizmos.DrawWireCube(roofCheck.position, roofCheckSize);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+
         if (other.CompareTag("Totem"))
         {
             OnKeyDelivered?.Invoke(1);
             Debug.Log("Totem");
         }
-        if(other.CompareTag("Destructable")){
+        if (other.CompareTag("Destructable"))
+        {
             other.gameObject.SetActive(false);
         }
 
         if (other.CompareTag("Movable"))
         {
             movableObject = other.gameObject.GetComponent<Rigidbody2D>();
-            if(!CanPush)
+            if (!CanPush)
             {
                 movableObject.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
             }
-        } 
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -264,7 +277,7 @@ public class Player : MonoBehaviour, IDuality
         if (other.CompareTag("Movable"))
         {
             movableObject.velocity = Vector2.zero;
-            if(!CanPush)
+            if (!CanPush)
             {
                 movableObject.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
