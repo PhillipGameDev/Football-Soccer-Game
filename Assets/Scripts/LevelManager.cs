@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
             deliveredKeys += playerKeyCount;
             playerKeyCount = 0;
             if(deliveredKeys == levelKeys){
-                //todo: finish level
+                GameManager.singleton.NextLevel();
             }
         }
         Debug.Log("Keys  " + playerKeyCount);

@@ -1402,6 +1402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7338944902761696856, guid: 3f4212c87f9ed5f4a9f1162c546bf0ca, type: 3}
+      propertyPath: levelKeys
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7338944902761696857, guid: 3f4212c87f9ed5f4a9f1162c546bf0ca, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1463,7 +1467,6 @@ GameObject:
   - component: {fileID: 1811464133}
   - component: {fileID: 1811464136}
   - component: {fileID: 1811464135}
-  - component: {fileID: 1811464134}
   m_Layer: 0
   m_Name: Non-Collide
   m_TagString: Untagged
@@ -1485,29 +1488,6 @@ Transform:
   m_Father: {fileID: 1321737601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1811464134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811464132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79e396f6233ab04f8aa1bfec688da5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
-  crouchSpeed: 5
-  jumpForce: 10
-  extraJumpNumber: 1
-  groundCheck: {fileID: 0}
-  groundCheckSize: {x: 0, y: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  collBody: {fileID: 0}
-  collCrouching: {fileID: 0}
 --- !u!483693784 &1811464135
 TilemapRenderer:
   m_ObjectHideFlags: 0
