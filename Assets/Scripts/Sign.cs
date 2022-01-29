@@ -13,7 +13,6 @@ public class Sign : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canva.SetActive(true);
-            Debug.Log("Sign active");
         }
     }
 
@@ -22,7 +21,6 @@ public class Sign : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             canva.SetActive(false);
-            Debug.Log("Sign desative");
         }
     }
 }
