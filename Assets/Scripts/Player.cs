@@ -252,6 +252,10 @@ public class Player : MonoBehaviour, IDuality
         if (other.CompareTag("Movable"))
         {
             movableObject = other.gameObject.GetComponent<Rigidbody2D>();
+            if(!CanPush)
+            {
+                movableObject.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            }
         } 
     }
 
@@ -260,6 +264,10 @@ public class Player : MonoBehaviour, IDuality
         if (other.CompareTag("Movable"))
         {
             movableObject.velocity = Vector2.zero;
+            if(!CanPush)
+            {
+                movableObject.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
             movableObject = null;
         }
     }
