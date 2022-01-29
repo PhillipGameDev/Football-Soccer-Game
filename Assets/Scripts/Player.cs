@@ -117,6 +117,7 @@ public class Player : MonoBehaviour, IDuality
     {
         Move(new Vector2(axisHorizontal, 0));
         Jump();
+        anim.SetBool("moving", rb2d.velocity.x != 0);
     }
 
     // Update is called once per frame
@@ -127,6 +128,7 @@ public class Player : MonoBehaviour, IDuality
 
         axisHorizontal = Input.GetAxisRaw("Horizontal");
         
+        anim.SetBool("isGrounded", IsGrounded);
         Flip();
         
 
@@ -144,7 +146,7 @@ public class Player : MonoBehaviour, IDuality
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
 
-        if (Input.GetButtonDown("Attack") && CanCrush && !isAttacking)
+        if (Input.GetButtonDown("Attack") && CanCrush && !isAttacking && IsGrounded)
         {
             StartCoroutine(Attack());
         }
@@ -188,6 +190,7 @@ public class Player : MonoBehaviour, IDuality
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             SoundManager.Instance.Play(SoundManager.Instance.audioJump);
+            anim.SetTrigger("jump");
         }
     }
 
@@ -218,6 +221,7 @@ public class Player : MonoBehaviour, IDuality
     }
 
     private IEnumerator Attack(){
+        anim.SetTrigger("attack");
         isAttacking = true;
         attack.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackTime);
