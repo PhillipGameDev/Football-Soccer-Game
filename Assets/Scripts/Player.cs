@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         }
     }
     
+    public static event UnityAction<int> OnKeyCollected;
 
     // Start is called before the first frame update
     void Start()
@@ -129,5 +131,14 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.CompareTag("Key"))
+        {
+            // TODO: Destroy key
+            OnKeyCollected?.Invoke(1);
+        }
     }
 }
