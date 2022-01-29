@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager singleton = null;
     public Object[] scenes;
-    private int current_scene = 0;
+    public int current_scene = 0;
     private List<string> scenes_paths;
     void Awake()
     {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
