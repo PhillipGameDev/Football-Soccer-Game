@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, IDuality
 {
     [SerializeField] private float speed = 7;
     [SerializeField] private float crouchSpeed = 5;
+    [SerializeField] private float pushSpeed = 4;
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private int extraJumpNumber = 1;
     [SerializeField] private Transform groundCheck;
@@ -22,12 +23,14 @@ public class Player : MonoBehaviour, IDuality
 
     private Rigidbody2D rb2d;
     private Animator anim;
+    private float axisHorizontal;
     private bool jumpInput;
     private bool crouchInput;
     private bool jumping;
     private int jumpCount;
     private bool grounded;
     private bool crouching;
+    private Rigidbody2D movableObject;
 
     public bool IsGrounded 
     { 
@@ -78,6 +81,7 @@ public class Player : MonoBehaviour, IDuality
 
     private void FixedUpdate()
     {
+        Move(new Vector2(axisHorizontal, 0));
         Jump();
     }
 
@@ -86,11 +90,10 @@ public class Player : MonoBehaviour, IDuality
     {
         IsGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
 
-        float axisHorizontal = Input.GetAxisRaw("Horizontal");
-        if(axisHorizontal != 0){
-            this.transform.localScale = new Vector3(axisHorizontal,1,1);
-        }
-        Move(new Vector2(axisHorizontal, 0));
+        axisHorizontal = Input.GetAxisRaw("Horizontal");
+        
+        Flip();
+        
 
         if (Input.GetButtonDown("Jump") && ((IsGrounded || (CanDoubleJump && jumpCount <= extraJumpNumber)) && !Crouching))
         {
@@ -114,6 +117,16 @@ public class Player : MonoBehaviour, IDuality
         crouchInput = Input.GetButton("Crouch");
 
         Crouch();
+    }
+
+    private void Flip()
+    {
+        if(axisHorizontal != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = axisHorizontal;
+            this.transform.localScale = scale;
+        }
     }
 
     private void Crouch()
@@ -143,7 +156,28 @@ public class Player : MonoBehaviour, IDuality
 
     private void Move(Vector2 direction) 
     {
-        transform.Translate(direction * (Crouching ? crouchSpeed : speed) * Time.deltaTime);
+        float finalSpeed = speed;
+
+        if (movableObject != null && CanPush)
+        {
+            finalSpeed = pushSpeed;
+        } 
+        else if (Crouching)
+        {
+            finalSpeed = crouchSpeed;
+        }
+
+        Vector2 velocity = rb2d.velocity;
+        velocity.x = direction.x * finalSpeed /* Time.deltaTime*/;
+        rb2d.velocity = velocity;
+        
+        // transform.Translate(movement);
+
+        if (movableObject != null && CanPush && IsGrounded) 
+        {
+            velocity.y = movableObject.velocity.y;
+            movableObject.velocity = velocity;
+        }
     }
 
     private IEnumerator Attack(){
@@ -176,6 +210,20 @@ public class Player : MonoBehaviour, IDuality
         }
         if(other.CompareTag("Destructable")){
             other.gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Movable"))
+        {
+            movableObject = other.gameObject.GetComponent<Rigidbody2D>();
+        } 
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Movable"))
+        {
+            movableObject.velocity = Vector2.zero;
+            movableObject = null;
         }
     }
 }

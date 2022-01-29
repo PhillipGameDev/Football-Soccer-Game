@@ -8,6 +8,8 @@ TagManager:
   - Totem
   - Destructable
   - Duality
+  - Sign
+  - Movable
   layers:
   - Default
   - TransparentFX
