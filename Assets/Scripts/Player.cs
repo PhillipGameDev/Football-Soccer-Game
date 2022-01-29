@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,12 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDuality
 {
+    [Serializable] 
+    public class DualityAttributes 
+    {
+        public Color color;
+        public Sprite sprite;    
+    }
     [SerializeField] private float speed = 7;
     [SerializeField] private float crouchSpeed = 5;
     [SerializeField] private float pushSpeed = 4;
@@ -17,14 +24,19 @@ public class Player : MonoBehaviour, IDuality
     [SerializeField] private Vector2 roofCheckSize;
     [SerializeField] private LayerMask roofLayer;
 
+    [Header("Duality")]
+    [SerializeField] private DualityAttributes dualityOne;
+    [SerializeField] private DualityAttributes dualityTwo;
+
     [Header("Colors")]
     [SerializeField] private Color colorDualityOne = Color.black;
     [SerializeField] private Color colorDualityTwo = Color.white;
 
-    [Header("Colliders")]
+    [Header("Components")]
     [SerializeField] private Collider2D collBody;
     [SerializeField] private Collider2D collCrouching;
     [SerializeField] private Collider2D attack;
+    [SerializeField] private SpriteRenderer maskRenderer;
     [SerializeField] float attackTime = 0.2f;
     private bool isAttacking = false;
 
@@ -98,7 +110,8 @@ public class Player : MonoBehaviour, IDuality
             {
                 currentDualityState = value;
                 anim.SetTrigger("dualityChanged");
-                spriteRenderer.color = currentDualityState == DualityState.DualityOne ? colorDualityOne : colorDualityTwo;
+                spriteRenderer.color = currentDualityState == DualityState.DualityOne ? dualityOne.color : dualityTwo.color;
+                maskRenderer.sprite = currentDualityState == DualityState.DualityOne ? dualityOne.sprite : dualityTwo.sprite;
 
                 if(!CanCrounch && Crouching)
                 {

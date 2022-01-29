@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum KeyType { Air, Fire, Earth, Rock, Water }
 public class Key : MonoBehaviour
 {
     public static event UnityAction<int> OnKeyCollected;

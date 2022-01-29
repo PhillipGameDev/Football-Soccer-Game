@@ -724,11 +724,18 @@ MonoBehaviour:
   roofLayer:
     serializedVersion: 2
     m_Bits: 64
+  dualityOne:
+    color: {r: 0.9764706, g: 0.75686276, b: 0.047058824, a: 1}
+    sprite: {fileID: 21300000, guid: b2dc6b244e5ad6e4d95eebdcf0acfb83, type: 3}
+  dualityTwo:
+    color: {r: 0.70980394, g: 0.78039217, b: 0.827451, a: 1}
+    sprite: {fileID: 21300000, guid: 73d309a9ba948794e9d4a9807c788d2f, type: 3}
   colorDualityOne: {r: 0.9764706, g: 0.75686276, b: 0.047058824, a: 1}
   colorDualityTwo: {r: 0.70980394, g: 0.78039217, b: 0.827451, a: 1}
   collBody: {fileID: 928135652657340650}
   collCrouching: {fileID: 5637470788211971215}
   attack: {fileID: 364543555}
+  maskRenderer: {fileID: 6848606399969785649}
   attackTime: 0.2
 --- !u!95 &856245583417699957
 Animator:
