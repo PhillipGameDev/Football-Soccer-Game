@@ -187,6 +187,7 @@ public class Player : MonoBehaviour, IDuality
             jumpInput = false;
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            SoundManager.Instance.Play(SoundManager.Instance.audioJump);
         }
     }
 
