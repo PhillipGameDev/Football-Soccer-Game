@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &364543554
 Transform:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 2}
+  m_Size: {x: 0.5, y: 1.8}
   m_EdgeRadius: 0
 --- !u!1 &1071485331545447744
 GameObject:
@@ -399,20 +399,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 897008077095265800}
     m_ColliderPaths:
-    - - X: 4999707
-        Y: -10000000
-      - X: 4999707
+    - - X: 5000000
         Y: 10000000
       - X: -5000000
-        Y: 9999707
-      - X: -4999707
+        Y: 10000000
+      - X: -5000000
+        Y: -10000000
+      - X: 5000000
         Y: -10000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.4999707, y: 1}
-      - {x: -0.5, y: 0.99997073}
-      - {x: -0.4999707, y: -1}
-      - {x: 0.4999707, y: -1}
+    - - {x: 0.5, y: 1}
+      - {x: -0.5, y: 1}
+      - {x: -0.5, y: -1}
+      - {x: 0.5, y: -1}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0
 --- !u!114 &8779469684525955862

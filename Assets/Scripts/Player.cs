@@ -106,7 +106,8 @@ public class Player : MonoBehaviour, IDuality
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
 
-        if (Input.GetButtonDown("Fire2") && !isAttacking){
+        if (Input.GetButtonDown("Fire2") && CanCrush && !isAttacking)
+        {
             StartCoroutine(Attack());
         }
 
@@ -148,7 +149,7 @@ public class Player : MonoBehaviour, IDuality
     private IEnumerator Attack(){
         isAttacking = true;
         attack.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(attackTime);
         isAttacking = false;
         attack.gameObject.SetActive(false);
     }
