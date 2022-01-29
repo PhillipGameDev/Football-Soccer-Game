@@ -9,20 +9,31 @@ public class Lever : MonoBehaviour
     public bool isToggle;
     private bool toggleValue = false;
     public UnityEvent<bool> action;
+    private float cooldownTime = 1.5f;
+    private bool isInCooldown = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isToggle)
+        if (isInCooldown)
         {
-            action.Invoke(true);
-            Debug.Log("Pressed  " + true);
+            return;
         }
         else
         {
-            if (other.CompareTag("Player"))
+            if (!isToggle)
             {
-                toggleValue = !toggleValue;
-                action.Invoke(toggleValue);
-                Debug.Log("Toggle  " + toggleValue);
+                action.Invoke(true);
+                Debug.Log("Pressed  " + true);
+            }
+            else
+            {
+                if (other.CompareTag("Player"))
+                {
+                    toggleValue = !toggleValue;
+                    action.Invoke(toggleValue);
+                    Debug.Log("Toggle  " + toggleValue);
+                    isInCooldown = true;
+                    Invoke("SetCooldown", cooldownTime);
+                }
             }
         }
     }
@@ -35,5 +46,10 @@ public class Lever : MonoBehaviour
             Debug.Log("Pressed  " + false);
         }
 
+    }
+
+    private void SetCooldown()
+    {
+        isInCooldown = false;
     }
 }

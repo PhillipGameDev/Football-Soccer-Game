@@ -485,6 +485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5035028001190237523, guid: 6238f671200c20c4896592c5e0da3e4f, type: 3}
+      propertyPath: isToggle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5035028001190237524, guid: 6238f671200c20c4896592c5e0da3e4f, type: 3}
       propertyPath: m_Name
       value: Lever
