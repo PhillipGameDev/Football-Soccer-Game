@@ -109,7 +109,7 @@ public class Player : MonoBehaviour, IDuality
                 rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
 
-        if (Input.GetButtonDown("Fire2") && CanCrush && !isAttacking)
+        if (Input.GetButtonDown("Attack") && CanCrush && !isAttacking)
         {
             StartCoroutine(Attack());
         }
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour, IDuality
         if(axisHorizontal != 0)
         {
             Vector3 scale = transform.localScale;
-            scale.x = axisHorizontal;
+            scale.x = Mathf.Sign(axisHorizontal);
             this.transform.localScale = scale;
         }
     }

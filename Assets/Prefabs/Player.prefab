@@ -491,7 +491,7 @@ MonoBehaviour:
   jumpForce: 20
   extraJumpNumber: 1
   groundCheck: {fileID: 8779469684809967090}
-  groundCheckSize: {x: 0.5, y: 0.1}
+  groundCheckSize: {x: 0.8, y: 0.1}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
