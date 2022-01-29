@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDuality
 {
     [SerializeField] private float speed = 7;
     [SerializeField] private float crouchSpeed = 5;
@@ -58,7 +58,14 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
+
+    public bool CanCrounch { get => CurrentDualityState == DualityState.DualityTwo; }
+    public bool CanDoubleJump { get => CurrentDualityState == DualityState.DualityTwo; }
+    public bool CanPush { get => CurrentDualityState == DualityState.DualityOne; }
+    public bool CanCrush { get => CurrentDualityState == DualityState.DualityOne; }
+
+    public DualityState CurrentDualityState { get; set; }
+
     public static event UnityAction<int> OnKeyCollected;
     public static event UnityAction<int> OnKeyDelivered;
 
@@ -85,7 +92,7 @@ public class Player : MonoBehaviour
         }
         Move(new Vector2(axisHorizontal, 0));
 
-        if (Input.GetButtonDown("Jump") && ((grounded  || jumpCount <= extraJumpNumber) && !Crouching))
+        if (Input.GetButtonDown("Jump") && ((IsGrounded || (CanDoubleJump && jumpCount <= extraJumpNumber)) && !Crouching))
         {
             jumpInput = true;
             jumpCount++;
@@ -109,8 +116,8 @@ public class Player : MonoBehaviour
     }
 
     private void Crouch()
-    {
-        if (crouchInput && IsGrounded)
+    { 
+        if (crouchInput && IsGrounded && CanCrounch)
         {
             Crouching = true;
         } 
