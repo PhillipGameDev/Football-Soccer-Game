@@ -77,6 +77,9 @@ public class Player : MonoBehaviour
         IsGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
 
         float axisHorizontal = Input.GetAxisRaw("Horizontal");
+        if(axisHorizontal != 0){
+            this.transform.localScale = new Vector3(axisHorizontal,1,1);
+        }
         Move(new Vector2(axisHorizontal, 0));
 
         if (Input.GetButtonDown("Jump") && ((grounded  || jumpCount <= extraJumpNumber) && !Crouching))
