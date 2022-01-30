@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
                 scenes_paths.Add(AssetDatabase.GetAssetPath(scenes[i]));
             }
             GameManager.singleton = this;
+            kins = new List<KinType>();
         }
         else
         {
@@ -48,9 +49,6 @@ public class GameManager : MonoBehaviour
 
     public void AddKin(KinType kin)
     {
-        if(kins == null){
-           kins = new List<KinType>();
-        }
         kins.Add(kin);
     }
 }
