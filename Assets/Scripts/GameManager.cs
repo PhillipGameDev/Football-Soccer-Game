@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Object[] scenes;
     public int current_scene = 0;
     private List<string> scenes_paths;
+    private List<KinType> kins;
     void Awake()
     {
         if (singleton == null)
@@ -35,5 +36,13 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(scenes_paths[this.current_scene]);
         }
+    }
+
+    public void AddKin(KinType kin)
+    {
+        if(this.kins == null){
+            this.kins = new List<KinType>();
+        }
+        this.kins.Add(kin);
     }
 }

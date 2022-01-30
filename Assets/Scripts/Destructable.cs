@@ -6,6 +6,7 @@ using UnityEngine;
 public class Destructable : MonoBehaviour
 {
     public static event UnityAction<bool> OnDestroied;
+    public KinType type;
     private void OnDisable()
     {
         OnDestroied?.Invoke(true);

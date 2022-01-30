@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public int levelKeys;
-    public GameObject kin;
+    public Destructable kin;
     public GameObject kinUI;
     private bool isKinDestroied;
     private int deliveredKeys;
@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
                 if (isKinDestroied)
                 {
                     kinUI.SetActive(true);   
+                    GameManager.singleton.AddKin(kin.type);
                 }
                 SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel);
                 Invoke("NextLevel", 2);

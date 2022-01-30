@@ -1243,7 +1243,7 @@ PrefabInstance:
     - target: {fileID: 7338944902761696856, guid: 3f4212c87f9ed5f4a9f1162c546bf0ca, type: 3}
       propertyPath: kin
       value: 
-      objectReference: {fileID: 1979508408}
+      objectReference: {fileID: 1979508409}
     - target: {fileID: 7338944902761696856, guid: 3f4212c87f9ed5f4a9f1162c546bf0ca, type: 3}
       propertyPath: kinUI
       value: 
@@ -1449,6 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400d21519bc0be94ea59a52540aa9bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
 --- !u!1001 &2105796685
 PrefabInstance:
   m_ObjectHideFlags: 0
