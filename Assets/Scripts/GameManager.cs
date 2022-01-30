@@ -9,18 +9,18 @@ public class GameManager : MonoBehaviour
     public static GameManager singleton = null;
     public Object[] scenes;
     public int current_scene = 0;
-    private List<string> scenes_paths;
+    public List<string> scenes_paths;
     private List<KinType> kins;
     void Awake()
     {
         if (singleton == null)
         {
             DontDestroyOnLoad(gameObject);
-            scenes_paths = new List<string>();
-            for (int i = 0; i < scenes.Length; i++)
-            {
-                scenes_paths.Add(AssetDatabase.GetAssetPath(scenes[i]));
-            }
+            // scenes_paths = new List<string>();
+            // for (int i = 0; i < scenes.Length; i++)
+            // {
+            //     // scenes_paths.Add(AssetDatabase.GetAssetPath(scenes[i]));
+            // }
             GameManager.singleton = this;
             kins = new List<KinType>();
         }
