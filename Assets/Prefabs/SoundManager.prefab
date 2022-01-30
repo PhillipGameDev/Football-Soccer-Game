@@ -46,12 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceEffects: {fileID: 1178057663590481038}
+  audioAngryTotem: {fileID: 8300000, guid: 54f85b77d887b944584e30c20b850eb3, type: 3}
+  audioCrashingRocks: {fileID: 8300000, guid: f24d9d536785db7449d00d1681d7e4f2, type: 3}
   audioDamage: {fileID: 8300000, guid: 610471082fc59724f8b0176ec32b6314, type: 3}
-  audioDoubleJump: {fileID: 8300000, guid: d67b4b75db70ef842999817635ad0aef, type: 3}
+  audioDoubleJump: {fileID: 8300000, guid: 41efc32ac8fbe684ca407bf61d0ae3bd, type: 3}
+  audioEndOfLevel: {fileID: 8300000, guid: 5f87c735e58a0244c8066f18d0fdb66b, type: 3}
+  audioError: {fileID: 8300000, guid: 5e28ea401a8254c45a0f07a042121476, type: 3}
   audioFire: {fileID: 8300000, guid: 414c95ab865b5014ab8e40d6e8ac6ac3, type: 3}
   audioJump: {fileID: 8300000, guid: c35d123dc90087046bcfb8b8fa4b474e, type: 3}
+  audioKinPickup: {fileID: 8300000, guid: b3e7c9ccbcef1ea4388aec66976000e2, type: 3}
   audioLightSwitch: {fileID: 8300000, guid: 731837cee4ebbdb429489fe67acf42dd, type: 3}
+  audioPushingRock: {fileID: 8300000, guid: 53bd854d10942604db2f39915103ddb8, type: 3}
+  audioRockCrash: {fileID: 8300000, guid: 9038b9c7fee4f1546972356ccf0759fe, type: 3}
+  audioSwordAttack: {fileID: 8300000, guid: 8dabbf4b9a8356242a1ecb5fc4d1acac, type: 3}
   audioTorchOn: {fileID: 8300000, guid: bd67b9125fe172b46a640d1e87dae610, type: 3}
+  audioTorchOff: {fileID: 8300000, guid: 0e7750e671956c64ca3506a57d9849f3, type: 3}
   audioTotemOpen: {fileID: 8300000, guid: 6dc4b296848d06243bb702477495c9de, type: 3}
   walkGrass: {fileID: 8300000, guid: fe3c9def4ff932d4180b2611a0ed959c, type: 3}
   walkRock: {fileID: 8300000, guid: 5e695fd9b0186a44c95a596a31d68576, type: 3}

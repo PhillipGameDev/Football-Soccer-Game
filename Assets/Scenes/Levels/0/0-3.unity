@@ -552,6 +552,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5266747037348462434, guid: 7072434d67bd09e4bb1c09167f0e3a33, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266747037348462434, guid: 7072434d67bd09e4bb1c09167f0e3a33, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5266747037348462437, guid: 7072434d67bd09e4bb1c09167f0e3a33, type: 3}
       propertyPath: m_Name
       value: Totem

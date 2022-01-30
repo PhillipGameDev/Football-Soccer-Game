@@ -186,6 +186,12 @@ public class Player : MonoBehaviour, IDuality
         }
     }
 
+    public void Die() 
+    {
+        anim.SetTrigger("die");
+        SoundManager.Instance.Play(SoundManager.Instance.audioDamage);    
+    }
+
     private void Crouch()
     {
         if (crouchInput)
@@ -213,7 +219,7 @@ public class Player : MonoBehaviour, IDuality
             jumpInput = false;
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            SoundManager.Instance.Play(SoundManager.Instance.audioJump);
+            SoundManager.Instance.Play(jumpCount == 1 ? SoundManager.Instance.audioDoubleJump : SoundManager.Instance.audioJump);
             anim.SetTrigger("jump");
         }
     }
@@ -272,6 +278,7 @@ public class Player : MonoBehaviour, IDuality
         if (other.CompareTag("Destructable"))
         {
             other.gameObject.SetActive(false);
+            SoundManager.Instance.Play(SoundManager.Instance.audioCrashingRocks);
         }
 
         if (other.CompareTag("Movable"))

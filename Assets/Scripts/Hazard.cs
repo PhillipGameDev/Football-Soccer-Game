@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Hazard : MonoBehaviour
 {
-    private int scene_idx; 
+    private int scene_idx;
+    private float delay = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +16,14 @@ public class Hazard : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){
             //Might bypass loading scene by teleporting player to start of scene
-            SceneManager.LoadScene(scene_idx);
+
+            other.GetComponent<Player>().Die();
+            Invoke("Reload", delay);
         }
-        
     }
     
+    private void Reload()
+    {
+        SceneManager.LoadScene(scene_idx);
+    }
 }

@@ -8,6 +8,15 @@ public class LevelManager : MonoBehaviour
     private bool isKinDestroied;
     private int deliveredKeys;
     private int playerKeyCount;
+    private Player player;
+
+    void Start()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
+    }
 
     void OnEnable()
     {
@@ -36,14 +45,20 @@ public class LevelManager : MonoBehaviour
             deliveredKeys += playerKeyCount;
             playerKeyCount = 0;
             Debug.Log("Delivered Keys  " + deliveredKeys);
-            if (deliveredKeys == levelKeys)
+            if (deliveredKeys >= levelKeys)
             {
                 if (isKinDestroied)
                 {
-                    kinUI.SetActive(true);
-                    Invoke("NextLevel", 2);
-                }else NextLevel();
+                    kinUI.SetActive(true);   
+                }
             }
+
+            SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel);
+            Invoke("NextLevel", 2);
+        }
+        else
+        {
+            SoundManager.Instance.Play(SoundManager.Instance.audioAngryTotem);
         }
     }
 
