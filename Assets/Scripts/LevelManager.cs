@@ -52,10 +52,9 @@ public class LevelManager : MonoBehaviour
                 {
                     kinUI.SetActive(true);   
                 }
+                SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel);
+                Invoke("NextLevel", 2);
             }
-
-            SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel);
-            Invoke("NextLevel", 2);
         }
         else
         {
