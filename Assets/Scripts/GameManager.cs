@@ -39,6 +39,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(scenes_paths[this.current_scene]);
+    }
+
+    public void Menu()
+    {
+        //this.current_scene = -1;
+        //SceneManager.LoadScene(scenes_paths[this.current_scene]);
+    }
+
     public List<KinType> GetKins()
     {
         if(kins == null){

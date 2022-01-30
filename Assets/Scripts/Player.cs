@@ -172,6 +172,16 @@ public class Player : MonoBehaviour, IDuality
             StartCoroutine(Attack());
         }
 
+        if (Input.GetButtonDown("Restart"))
+        {
+            GameManager.singleton.RestartLevel();
+        }
+
+        if (Input.GetButtonDown("Menu"))
+        {
+            GameManager.singleton.Menu();
+        }
+
         crouchInput = Input.GetButton("Crouch");
 
         Crouch();
