@@ -38,11 +38,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<KinType> GetKins()
+    {
+        if(kins == null){
+            kins = new List<KinType>();
+        }
+        return kins;
+    }
+
     public void AddKin(KinType kin)
     {
-        if(this.kins == null){
-            this.kins = new List<KinType>();
+        if(kins == null){
+           kins = new List<KinType>();
         }
-        this.kins.Add(kin);
+        kins.Add(kin);
     }
 }
