@@ -1,4 +1,4 @@
 public enum KinType
 {
-    Moon, Night, Sun, World
+    None, Moon, Night, Sun, World
 }

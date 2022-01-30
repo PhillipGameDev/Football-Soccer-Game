@@ -280,22 +280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructable
       objectReference: {fileID: 0}
-    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 296d3db60ea077443a5b15aea7b1e46e, type: 3}
-    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2206425152803988151, guid: ca060a010303c614186b2912f1717b27, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1190,18 +1174,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2206425152803988105, guid: ca060a010303c614186b2912f1717b27, type: 3}
   m_PrefabInstance: {fileID: 285302974}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1781338607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781338603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 400d21519bc0be94ea59a52540aa9bfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1873176901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5386337334642009378, guid: 2d058a790b336324cbf4fb3e9c5858f2, type: 3}

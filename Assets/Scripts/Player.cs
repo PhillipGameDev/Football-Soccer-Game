@@ -281,8 +281,7 @@ public class Player : MonoBehaviour, IDuality
         }
         if (other.CompareTag("Destructable"))
         {
-            other.gameObject.SetActive(false);
-            SoundManager.Instance.Play(SoundManager.Instance.audioCrashingRocks);
+            other.GetComponent<Destructable>().Break();
         }
 
         if (other.CompareTag("Movable"))

@@ -66,7 +66,6 @@ public class LevelManager : MonoBehaviour
     public void KinDestroied(bool value)
     {
         isKinDestroied = true;
-        SoundManager.Instance.Play(SoundManager.Instance.audioKinPickup);
     }
     public void NextLevel()
     {
