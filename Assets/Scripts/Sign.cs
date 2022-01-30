@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sign : MonoBehaviour
 {
+    [SerializeField] private GameObject canva;
 
-    public string text;
-    public GameObject canva;
+    private Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.CompareTag("Player"))
         {
-            canva.SetActive(true);
+            anim.SetBool("show", true);
         }
     }
 
@@ -20,7 +26,7 @@ public class Sign : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            canva.SetActive(false);
+            anim.SetBool("show", false);
         }
     }
 }
