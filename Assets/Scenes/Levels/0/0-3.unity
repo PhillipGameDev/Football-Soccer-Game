@@ -573,6 +573,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5724321725569093788, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.709325
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724321725569093788, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.1453376
+      objectReference: {fileID: 0}
     - target: {fileID: 5724321725569093789, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
       propertyPath: m_Name
       value: Sign
