@@ -99,6 +99,7 @@ public class Player : MonoBehaviour, IDuality
     public bool CanDoubleJump { get => CurrentDualityState == DualityState.DualityTwo; }
     public bool CanPush { get => CurrentDualityState == DualityState.DualityOne; }
     public bool CanCrush { get => CurrentDualityState == DualityState.DualityOne; }
+    public bool IsPushing { get => movableObject != null && CanPush && IsGrounded && axisHorizontal != 0; }
 
     private DualityState currentDualityState;
     public DualityState CurrentDualityState
@@ -174,6 +175,8 @@ public class Player : MonoBehaviour, IDuality
         crouchInput = Input.GetButton("Crouch");
 
         Crouch();
+
+        SoundManager.Instance.SetBackgroundEffect(SoundManager.Instance.audioPushingRock, IsPushing);
     }
 
     private void Flip()
@@ -253,6 +256,7 @@ public class Player : MonoBehaviour, IDuality
     private IEnumerator Attack()
     {
         anim.SetTrigger("attack");
+        SoundManager.Instance.Play(SoundManager.Instance.audioSwordAttack);
         isAttacking = true;
         attack.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackTime);

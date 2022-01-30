@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
     [SerializeField] private AudioSource sourceEffects;
+    [SerializeField] private AudioSource sourceBackgroundEffects;
 
     public AudioClip audioAngryTotem;
     public AudioClip audioCrashingRocks;
@@ -46,5 +47,29 @@ public class SoundManager : MonoBehaviour
             return;
 
         sourceEffects.PlayOneShot(clip);
+    }
+
+    public void SetBackgroundEffect(AudioClip clip, bool playing)
+    {
+        sourceBackgroundEffects.clip = clip;
+
+        if (playing)
+        {
+            if(!sourceBackgroundEffects.isPlaying)
+                sourceBackgroundEffects.Play();
+        }
+        else
+        {
+            if (sourceBackgroundEffects.isPlaying)
+            {
+                sourceBackgroundEffects.Stop();
+            }
+        }
+    }
+
+    public void StopBackground()
+    {
+        sourceBackgroundEffects.Stop();
+        sourceBackgroundEffects.clip = null;
     }
 }
