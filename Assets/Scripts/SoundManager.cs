@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip audioError;
     public AudioClip audioFire;
     public AudioClip audioJump;
+    public AudioClip audioKeyPickup;
     public AudioClip audioKinPickup;
     public AudioClip audioLightSwitch;
     public AudioClip audioPushingRock;

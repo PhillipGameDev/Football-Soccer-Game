@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
     {
         playerKeyCount += count;
         Debug.Log("Keys " + playerKeyCount);
+        SoundManager.Instance.Play(SoundManager.Instance.audioKeyPickup);
     }
 
     public void KeyDelivered(int count)

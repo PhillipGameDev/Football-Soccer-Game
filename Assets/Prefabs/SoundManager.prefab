@@ -56,6 +56,7 @@ MonoBehaviour:
   audioError: {fileID: 8300000, guid: 5e28ea401a8254c45a0f07a042121476, type: 3}
   audioFire: {fileID: 8300000, guid: 414c95ab865b5014ab8e40d6e8ac6ac3, type: 3}
   audioJump: {fileID: 8300000, guid: c35d123dc90087046bcfb8b8fa4b474e, type: 3}
+  audioKeyPickup: {fileID: 8300000, guid: aee3816481cc4db4e926ae4d30e43fd0, type: 3}
   audioKinPickup: {fileID: 8300000, guid: b3e7c9ccbcef1ea4388aec66976000e2, type: 3}
   audioLightSwitch: {fileID: 8300000, guid: 731837cee4ebbdb429489fe67acf42dd, type: 3}
   audioPushingRock: {fileID: 8300000, guid: 53bd854d10942604db2f39915103ddb8, type: 3}
