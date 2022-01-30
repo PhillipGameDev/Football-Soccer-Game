@@ -33,6 +33,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &-5408943059117678472
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music Loud
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: c5d2a1ddf4a7cc243b792182d3880313
+  m_Children: []
+  m_Volume: d7a7221ba2b8adb4d9145eb389fe2d00
+  m_Pitch: 9682318211691754b9975e0a60a16d31
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2781954800843220852}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-4801679233882659983
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -43,6 +62,20 @@ AudioMixerEffectController:
   m_EffectID: a1aef65864821a44b8761239fb418e6a
   m_EffectName: Attenuation
   m_MixLevel: f57c87cc283c47f4a840dfcf211a4d27
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-2781954800843220852
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ec5c380f3d321d343a95bee8358962bd
+  m_EffectName: Attenuation
+  m_MixLevel: 6e252e3cccd866e43bc684dbc10b8c80
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -102,6 +135,7 @@ AudioMixerController:
     - c4c79f48e6de04d43840bd49081cb4db
     - 9ab5a4f7c4ae2ff409179015060515e2
     - ca8d15dd1a558064eaed2b7fd055e73e
+    - c5d2a1ddf4a7cc243b792182d3880313
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -115,6 +149,7 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 1453f4d1ebce79143ba8207b98ee415e
   m_Children:
+  - {fileID: -5408943059117678472}
   - {fileID: -46084509055975588}
   - {fileID: 8820901988567603905}
   - {fileID: -7262012013030915550}
@@ -151,6 +186,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 2b470ceb33377374db678db62cadbe8e
   m_FloatValues:
+    d7a7221ba2b8adb4d9145eb389fe2d00: -0.39762527
     a1848dcc4b7efdd44998e3a533d4bffa: -16.035946
     6e245a1daee0e624fa09a3b76a76fd08: -4.560346
     0a388a8e54d538243ae1bbf55aaf7f80: -15.574045
