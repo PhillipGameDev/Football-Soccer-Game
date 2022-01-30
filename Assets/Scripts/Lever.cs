@@ -9,7 +9,7 @@ public class Lever : MonoBehaviour
     public bool isToggle;
     private bool toggleValue = false;
     public UnityEvent<bool> action;
-    private float cooldownTime = 1.5f;
+    private float cooldownTime = 0.5f;
     private bool isInCooldown = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
