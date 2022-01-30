@@ -30,6 +30,7 @@ public class Destructable : MonoBehaviour
         {
             kinObject.SetActive(true);
             SoundManager.Instance.Play(SoundManager.Instance.audioKinPickup);
+            GameManager.singleton.AddKin(type);
         }
 
         
