@@ -48,4 +48,5 @@ MonoBehaviour:
   - {fileID: 102900000, guid: b81082e923a3f75448e0a3c67ebe2306, type: 3}
   - {fileID: 102900000, guid: aec67007e67aaa54791b89f6f54bec03, type: 3}
   - {fileID: 102900000, guid: 6231c3ecdb35e87469f654a2725e5bed, type: 3}
-  - {fileID: 102900000, guid: 67cf3bdcc641c1649a5556a028311b8d, type: 3}
+  - {fileID: 102900000, guid: 0d63dcb82f07c6617890b48275cc7739, type: 3}
+  current_scene: 0
