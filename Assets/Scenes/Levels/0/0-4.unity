@@ -195,6 +195,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructable
       objectReference: {fileID: 0}
+    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 296d3db60ea077443a5b15aea7b1e46e, type: 3}
+    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206425152803988150, guid: ca060a010303c614186b2912f1717b27, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2206425152803988151, guid: ca060a010303c614186b2912f1717b27, type: 3}
       propertyPath: m_RootOrder
       value: 2
