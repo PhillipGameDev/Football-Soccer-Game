@@ -268,7 +268,6 @@ public class Player : MonoBehaviour, IDuality
         if (other.CompareTag("Totem"))
         {
             OnKeyDelivered?.Invoke(1);
-            Debug.Log("Totem");
         }
         if (other.CompareTag("Destructable"))
         {

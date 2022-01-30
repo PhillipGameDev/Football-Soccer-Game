@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
         {
             deliveredKeys += playerKeyCount;
             playerKeyCount = 0;
-            Debug.Log("Keys  " + deliveredKeys);
+            Debug.Log("Delivered Keys  " + deliveredKeys);
             if (deliveredKeys == levelKeys)
             {
                 if (isKinDestroied)
@@ -45,8 +45,6 @@ public class LevelManager : MonoBehaviour
                 }else NextLevel();
             }
         }
-        Debug.Log("Keys  " + playerKeyCount);
-        Debug.Log("Totem " + deliveredKeys);
     }
 
     public void KinDestroied(bool value)
