@@ -8,18 +8,22 @@ public class Destructable : MonoBehaviour
     public static event UnityAction<bool> OnDestroied;
     public KinType type;
     public GameObject kinObject;
+    private Collider2D coll;
 
     private Animator anim;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
         kinObject.SetActive(false);
     }
 
     public void Break()
     {
+        coll.enabled = false;
         anim.SetTrigger("break");
+        
         SoundManager.Instance.Play(SoundManager.Instance.audioCrashingRocks);
 
         if (type != KinType.None)
