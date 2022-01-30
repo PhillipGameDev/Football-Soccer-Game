@@ -723,9 +723,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1193676599260827389, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652366921769374713, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674595723621888069, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5724321724640280865, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724321724974232215, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_Type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724321724974232215, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5724321724974232215, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
       objectReference: {fileID: 0}
     - target: {fileID: 5724321725569093789, guid: fe7a53e69e711304a9317f5dbf2a2d2d, type: 3}
       propertyPath: m_Name
@@ -1126,7 +1150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1614a824e833a2e4a9a169e52e113960, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0516f0ce0c1d3f949abff92984aa12c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
