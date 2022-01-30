@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     {
         Key.OnKeyCollected -= KeyCollected;
         Player.OnKeyDelivered -= KeyDelivered;
-        Destructable.OnDestroied += KinDestroied;
+        Destructable.OnDestroied -= KinDestroied;
     }
 
     public void KeyCollected(int count)
@@ -35,13 +35,13 @@ public class LevelManager : MonoBehaviour
         {
             deliveredKeys += playerKeyCount;
             playerKeyCount = 0;
+            Debug.Log("Keys  " + deliveredKeys);
             if (deliveredKeys == levelKeys)
             {
                 if (isKinDestroied)
                 {
                     kinUI.SetActive(true);
-                    Debug.Log("Keys  " + playerKeyCount);
-                    Invoke("NextLevel", 3);
+                    Invoke("NextLevel", 2);
                 }else NextLevel();
             }
         }
@@ -55,6 +55,7 @@ public class LevelManager : MonoBehaviour
     }
     public void NextLevel()
     {
+        Debug.Log("NextLevel");
         GameManager.singleton.NextLevel();
     }
 }
