@@ -152,6 +152,9 @@ public class Player : MonoBehaviour, IDuality
         anim.SetBool("isGrounded", IsGrounded);
         Flip();
 
+        if (!enabled)
+            return;
+
 
         if (Input.GetButtonDown("Jump") && ((IsGrounded || (CanDoubleJump && jumpCount <= extraJumpNumber)) && !Crouching))
         {
@@ -203,6 +206,8 @@ public class Player : MonoBehaviour, IDuality
     {
         anim.SetTrigger("die");
         SoundManager.Instance.Play(SoundManager.Instance.audioDamage);    
+        this.enabled = false;
+        rb2d.velocity = Vector2.zero;
     }
 
     private void Crouch()
