@@ -54,6 +54,7 @@ public class LevelManager : MonoBehaviour
                     GameManager.singleton.AddKin(kin.type);
                 }
                 SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel);
+                player.Dance();
                 Invoke("NextLevel", 2);
             }
         }

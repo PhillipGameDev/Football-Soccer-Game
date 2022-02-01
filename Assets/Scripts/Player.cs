@@ -210,6 +210,13 @@ public class Player : MonoBehaviour, IDuality
         rb2d.velocity = Vector2.zero;
     }
 
+    public void Dance()
+    {
+        anim.SetBool("dancing", true);
+        this.enabled = false;
+        rb2d.velocity = Vector2.zero;
+    }
+
     private void Crouch()
     {
         if (crouchInput)
