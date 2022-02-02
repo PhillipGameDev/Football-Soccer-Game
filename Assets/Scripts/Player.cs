@@ -205,7 +205,7 @@ public class Player : MonoBehaviour, IDuality
     public void Die() 
     {
         anim.SetTrigger("die");
-        SoundManager.Instance.Play(SoundManager.Instance.audioDamage);    
+        SoundManager.Instance.Play(SoundManager.Instance.audioDamageKnife);    
         this.enabled = false;
         rb2d.velocity = Vector2.zero;
     }

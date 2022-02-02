@@ -50,6 +50,7 @@ MonoBehaviour:
   audioAngryTotem: {fileID: 8300000, guid: 54f85b77d887b944584e30c20b850eb3, type: 3}
   audioCrashingRocks: {fileID: 8300000, guid: f24d9d536785db7449d00d1681d7e4f2, type: 3}
   audioDamage: {fileID: 8300000, guid: 610471082fc59724f8b0176ec32b6314, type: 3}
+  audioDamageKnife: {fileID: 8300000, guid: b9296c292d79f0a408bec62c256d6bc1, type: 3}
   audioDoubleJump: {fileID: 8300000, guid: 41efc32ac8fbe684ca407bf61d0ae3bd, type: 3}
   audioEndOfLevel: {fileID: 8300000, guid: 5f87c735e58a0244c8066f18d0fdb66b, type: 3}
   audioError: {fileID: 8300000, guid: 5e28ea401a8254c45a0f07a042121476, type: 3}

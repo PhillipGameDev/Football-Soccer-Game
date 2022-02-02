@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip audioAngryTotem;
     public AudioClip audioCrashingRocks;
     public AudioClip audioDamage;
+    public AudioClip audioDamageKnife;
     public AudioClip audioDoubleJump;
     public AudioClip audioEndOfLevel;
     public AudioClip audioError;
@@ -42,12 +43,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void Play(AudioClip clip)
+    public void Play(AudioClip clip, float volume = 1f)
     {
         if (sourceEffects == null)
             return;
 
-        sourceEffects.PlayOneShot(clip);
+        sourceEffects.PlayOneShot(clip, volume);
     }
 
     public void SetBackgroundEffect(AudioClip clip, bool playing)

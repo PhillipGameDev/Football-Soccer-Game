@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour
                     kinUI.SetActive(true);   
                     GameManager.singleton.AddKin(kin.type);
                 }
-                SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel);
+                SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel, 0.4f);
                 player.Dance();
                 Invoke("NextLevel", 2);
             }
