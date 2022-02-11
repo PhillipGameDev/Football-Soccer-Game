@@ -53,6 +53,8 @@ public class Player : MonoBehaviour, IDuality
     private bool roofed;
     private Rigidbody2D movableObject;
 
+    private List<Key> collectedKeys;
+
     public bool IsGrounded
     {
         get => grounded;
@@ -132,6 +134,8 @@ public class Player : MonoBehaviour, IDuality
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        collectedKeys = new List<Key>();
     }
 
     private void FixedUpdate()
@@ -300,6 +304,21 @@ public class Player : MonoBehaviour, IDuality
         if (other.CompareTag("Totem"))
         {
             OnKeyDelivered?.Invoke(1);
+            
+            Totem totem = other.GetComponent<Totem>();
+
+            if (collectedKeys.Count > 0)
+            {
+                foreach(Key key in collectedKeys)
+                {
+                    totem.CollectKey(key);
+                }
+                collectedKeys.Clear();
+            }
+            else 
+            {
+                totem.NoKey();
+            }
         }
         if (other.CompareTag("Destructable"))
         {
@@ -313,6 +332,14 @@ public class Player : MonoBehaviour, IDuality
             {
                 movableObject.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
             }
+        }
+
+        if (other.CompareTag("Key")) 
+        {
+            KeyPickup pickup = other.GetComponent<KeyPickup>();
+            collectedKeys.Add(pickup.Key);
+            Destroy(other.gameObject);
+            SoundManager.Instance.Play(SoundManager.Instance.audioKeyPickup);
         }
     }
 

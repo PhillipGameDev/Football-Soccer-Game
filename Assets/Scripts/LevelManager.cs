@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     private int deliveredKeys;
     private int playerKeyCount;
     private Player player;
+    private Totem totem;
 
     void Start()
     {
@@ -16,27 +17,37 @@ public class LevelManager : MonoBehaviour
         {
             player = FindObjectOfType<Player>();
         }
+
+        totem = FindObjectOfType<Totem>();
+        totem.OnAllKeyCollected += EndLevel;
+    }
+
+    void OnDestroy()
+    {
+        totem.OnAllKeyCollected -= EndLevel;
     }
 
     void OnEnable()
     {
-        Key.OnKeyCollected += KeyCollected;
-        Player.OnKeyDelivered += KeyDelivered;
         Destructable.OnDestroied += KinDestroied;
     }
 
     private void OnDisable()
     {
-        Key.OnKeyCollected -= KeyCollected;
-        Player.OnKeyDelivered -= KeyDelivered;
         Destructable.OnDestroied -= KinDestroied;
     }
 
-    public void KeyCollected(int count)
+    public void EndLevel()
     {
-        playerKeyCount += count;
-        Debug.Log("Keys " + playerKeyCount);
-        SoundManager.Instance.Play(SoundManager.Instance.audioKeyPickup);
+        if (isKinDestroied)
+        {
+            kinUI.SetActive(true);   
+            GameManager.singleton.AddKin(kin.type);
+        }
+
+        SoundManager.Instance.Play(SoundManager.Instance.audioEndOfLevel, 0.4f);
+        player.Dance();
+        Invoke("NextLevel", 2);
     }
 
     public void KeyDelivered(int count)
@@ -57,10 +68,6 @@ public class LevelManager : MonoBehaviour
                 player.Dance();
                 Invoke("NextLevel", 2);
             }
-        }
-        else
-        {
-            SoundManager.Instance.Play(SoundManager.Instance.audioAngryTotem);
         }
     }
 

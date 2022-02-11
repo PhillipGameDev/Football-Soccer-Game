@@ -1,22 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public enum KeyType { Air, Fire, Earth, Rock, Water }
-public class Key : MonoBehaviour
+[CreateAssetMenu(fileName = "Key", menuName = "Tzolkin/Key", order = 0)]
+public class Key : ScriptableObject 
 {
-    public static event UnityAction<int> OnKeyCollected;
+    public enum Type { Air, Fire, Earth, Rock, Water }
 
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        Debug.Log("ON TRIGGER ENTER");
-        if (other.CompareTag("Player"))
-        {
-            // TODO: Destroy key
-            OnKeyCollected?.Invoke(1);
-            Debug.Log("Key");
-            Destroy(gameObject);
-        }    
-    }
+    [SerializeField] private Type type;
+    [SerializeField] private Sprite sprite;
+
+    public Type KeyType { get => type; }
+    public Sprite Sprite { get => sprite; }
 }
