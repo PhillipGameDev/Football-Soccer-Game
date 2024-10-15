@@ -21,9 +21,9 @@ Description Download Football Game DEMO APK – CLICK TO DOWNLOAD Game Descripti
  
 # Screenshots
 [![Football Game 2023 Soccer](https://img.youtube.com/vi/KtO0vk0M5kc/mqdefault.jpg)](https://www.youtube.com/embed/KtO0vk0M5kc "Football Game 2023 Soccer")
-![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/master/Assets/Board/1.jpg)
-![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/master/Assets/Board/2.webp)
-![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/master/Assets/Board/3.jpg)
-![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/master/Assets/Board/4.jpg)
-![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/master/Assets/Board/5.jpg)
+![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/main/Assets/Board/1.jpg)
+![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/main/Assets/Board/2.webp)
+![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/main/Assets/Board/3.jpg)
+![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/main/Assets/Board/4.jpg)
+![image](https://github.com/kowalewskiadrian/Football-Soccer-Game/blob/main/Assets/Board/5.jpg)
 
